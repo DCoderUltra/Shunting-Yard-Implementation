@@ -4,7 +4,7 @@ This programm only works to code in the following fashion.
 
 Examples:
 
-  - 1 + x - 5
+  - 1  +  x  -  5
 
   - sin x
 
