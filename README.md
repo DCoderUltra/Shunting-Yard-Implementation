@@ -1,19 +1,7 @@
 # Shunting-Yard-Implementation
 
-This programm only works to code in the following fashion.
+V 2.0
 
-Examples:
-
-  - 1  +  x  -  5
-
-  - sin x
-
-  - log ( 1 + x )
-
-  - x ^ 2 - 2 * x + 5 * 3
-
-  - 4 / 2
-
-  - 5 * ( 3 + 4 )
-
-Spaces are Important!
+This programm uses the Shunting Yard Alghoritm to allow to calculate the result of any numeric expression.
+I also implemented it so you can work with one unkown variable (you could implement more if you'd like).
+So has you might have seen in Numerical-Analysis-Tools Repository, this can be used to compute the solution of equations. Although there is not working correctly yet.
