@@ -10,7 +10,7 @@ So has you might have seen in Numerical-Analysis-Tools Repository, this can be u
 
 To implement in the future:
 
-  .Bad use of function detection
-  .Unkown variables detection
+  -Bad use of function detection
+  -Unkown variables detection
 
 Any bugs or ideas let me know.
