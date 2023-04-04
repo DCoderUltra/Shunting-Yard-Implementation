@@ -22,6 +22,9 @@ Available functions:
  - tan
  - exp
  - log
+ 
+ Availabel commands:
+  - quit (it ends the programm)
 
 To implement in the future:
 
