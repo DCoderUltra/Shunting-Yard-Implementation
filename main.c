@@ -34,7 +34,7 @@ int command(char *s){
 	QE * FUNCTION;
 	init_q(&FUNCTION);
 	FUNCTION = f_create(s);
-	if (FUNCTION==NULL); return 1;
+	if (FUNCTION==NULL) return 1;
 	double x = 0;
 	result = function(&FUNCTION, x);
 	printf("ans = %.*f\n",precision, result);
