@@ -43,7 +43,7 @@ void list(ST *PES)
 {
 	if (empty(PES))
 		return;
-	printf("%s\n", (PES->t).string);
+	printf("%s - %f\n", (PES->t).string, (PES->t).val);
 	list(PES->next);
 }
 

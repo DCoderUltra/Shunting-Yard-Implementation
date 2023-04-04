@@ -37,6 +37,7 @@ double rpn_calculator(QE ** FUNCTION, double x){
 				arg = top(CALCULATOR).val;
 				res = action(first(*FUNCTION).string,0,0,arg);
 				TOKEN t; t.prec=0; t.val = res;
+				pop(&CALCULATOR);
 				add(&CALCULATOR, t);
 				dequeue(FUNCTION); i++;
 			}

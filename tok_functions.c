@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include<stdlib.h>
 #include<string.h>
 #include<ctype.h>
@@ -26,8 +27,7 @@ TOKEN oper[] = {
 
 TOKEN * creation(TOKEN *list, char *s, int n_tok)
 {
-	int l_pos=0;
-	int k=0;
+	int l_pos=0, k=0;
 	while(l_pos<n_tok){
 		char tmp[50]="\0";
 		while(s[k]!=SEP && s[k]!='\0'){
@@ -57,11 +57,30 @@ TOKEN * creation(TOKEN *list, char *s, int n_tok)
 		}
 		l_pos++;
 	}
+
 	return list;
 }
 
 void enqueue_list(TOKEN * list, int n_toks, QE **PQE){
 	for(int i=0; i<n_toks; i++)
 		enqueue(PQE, list[i]);
+}
+
+int verify_functions(TOKEN * list, int n_toks){
+	char func[15];
+	FILE *fp = fopen("functions.txt", "r");
+	for(int i=0; i<n_toks; i++){
+		if(list[i].prec==6)
+			while(fscanf(fp, "%s", func)!=EOF){
+				if(strcmp(list[i].string, func)==0){
+					if(list[i+1].string[0]!='('){
+						printf("Bad use of function %s -> Try %s(argument)\nExamples: sin(5), cos(4-3), exp(-4^2) ...\n", list[i].string, list[i].string);
+					return 0;
+					}
+					break;
+				}
+			}
+	}
+	return 1;
 }
 

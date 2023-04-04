@@ -15,18 +15,23 @@ QE * f_create(char *s){
 	init_q(&PQE);
 
 	// String Preparation and Check
-	remove_spaces(s); printf("NWS: ~%s~\n", s);
+	remove_spaces(s); //printf("NWS: %s\n", s);
 	verify(s);
-	n_toks=regular(s); printf("PFN: ~%s~\n",s);
+	n_toks=regular(s); //printf("PFN: %s\n",s);
 
 	// List Tokens Creation
 	TOKEN * list = malloc(sizeof(TOKEN)*(n_toks+1));
 	list = creation(list, s, n_toks);
+	if(verify_functions(list, n_toks)==0){
+		;
+	}
+	else{
 	enqueue_list(list, n_toks, &PQE);
 
 	// Shunting Yard Alghoritm implementation
 	alg_sya(&PQE, n_toks);
-	printf("RPN: ~"); list_q(PQE); puts("~\n");
+	//printf("RPN: "); list_q(PQE); puts("\n");
 	return PQE;
+	}
 }
 

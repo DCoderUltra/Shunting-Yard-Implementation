@@ -5,10 +5,6 @@
 #include<ctype.h>
 #define SEP ' '
 
-/*
-TODO: Implement bad use of functions!
-*/
-
 // Removes all white space
 void remove_spaces(char *s){
 
@@ -48,9 +44,6 @@ void verify(char *s)
 			exit(1);
 		}
 	}
-
-	// Functions bad use
-
 }
 
 // Writtes string in propper notation
