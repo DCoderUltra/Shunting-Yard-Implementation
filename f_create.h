@@ -1,2 +1,2 @@
-QE * f_create(char *s);
+int f_create(char *s, QE ** FUNCTION);
 

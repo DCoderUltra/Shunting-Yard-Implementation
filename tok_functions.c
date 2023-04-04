@@ -75,12 +75,12 @@ int verify_functions(TOKEN * list, int n_toks){
 				if(strcmp(list[i].string, func)==0){
 					if(list[i+1].string[0]!='('){
 						printf("Bad use of function %s -> Try %s(argument)\nExamples: sin(5), cos(4-3), exp(-4^2) ...\n", list[i].string, list[i].string);
-					return 0;
+					return -1;
 					}
 					break;
 				}
 			}
 	}
-	return 1;
+	return 0;
 }
 

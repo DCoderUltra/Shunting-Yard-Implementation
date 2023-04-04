@@ -11,6 +11,7 @@ void init_q(QE ** queue);
 int empty_q(QE * queue);
 void enqueue(QE ** queue, TOKEN tok);
 void dequeue(QE ** queue);
+void dequeue_all(QE **queue);
 void count_q(QE * queue, int *c);
 void list_q(QE * queue);
 TOKEN first(QE * queue);

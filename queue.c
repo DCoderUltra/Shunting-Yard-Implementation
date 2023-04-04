@@ -45,6 +45,15 @@ void dequeue(QE ** queue){
 	free(tmp);
 }
 
+void dequeue_all(QE **queue){
+	QE *tmp = malloc(sizeof(QE)*2);
+	while(!empty_q(*queue)){
+		tmp = (*queue);
+		*queue = (*queue)->behind;
+		free(tmp);
+	}
+}
+
 void list_q(QE * queue){
 	if (empty_q(queue)) return;
 	printf("%s ", (queue->t).string);

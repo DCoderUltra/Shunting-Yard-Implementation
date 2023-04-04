@@ -5,15 +5,13 @@
 #include<ctype.h>
 #define SEP ' '
 
-// Removes all white space
 void remove_spaces(char *s){
-
+// Removes all white spaces
 	char tmp[strlen(s)];
-
 	int i,j;
-	for(i=0, j=0; s[i]!='\0' && s[i]!='\n' ; i++){
-		if(s[i]!=' ')
-			tmp[j++]=s[i];
+
+	for(i=0, j=0; s[i]!='\0'; i++){
+		if(s[i]!=' ') tmp[j++]=s[i];
 	}
 	tmp[j]='\0';
 	strcpy(s,tmp);
@@ -49,17 +47,17 @@ void verify(char *s)
 // Writtes string in propper notation
 int regular(char *s){
 	char *opers= "+-*/^()";
-	int n_toks=0;
 	char *tmp = (char *) malloc(sizeof(char)*strlen(s)*2);
+	memset(tmp,'\0',strlen(tmp));
 	int i=0, j=0, b=0;
 
 	// If founds a simple operator adds a separator
-	if(strchr(opers, s[i])!=NULL){
+	if(strchr(opers, s[0])!=NULL){
 		tmp[j++]=s[0];
 		tmp[j++]=SEP;
 		i++;
 	}
-	for( ; s[i]!='\0'; i++){
+	while(s[i]!='\0'){
 		if(strchr(opers, s[i])!=NULL){
 			tmp[j++]=SEP;
 			tmp[j++]=s[i];
@@ -67,8 +65,9 @@ int regular(char *s){
 		}
 		else
 			tmp[j++]=s[i];
+		i++;
 	}
-
+	tmp[j]='\0';
 	strcpy(s,tmp); memset(tmp,'\0',strlen(tmp));
 
 	// Erases multiples separators
@@ -83,7 +82,11 @@ int regular(char *s){
 	strcpy(s, tmp);
 	free(tmp);
 
-	// Counts separators i.e. number of tokens
+}
+
+// Counts separators i.e. number of tokens
+int count_toks(char *s){
+	int n_toks=0;
 	for(int i=0; s[i]!='\0'; i++)
 		if(s[i]==SEP)
 			n_toks++;
