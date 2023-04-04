@@ -6,36 +6,40 @@
 // Switch case not used due to not being able to compare strings so I decided to
 // compare using a lot... of if satements
 
-double action(char *s, double a, double b, double arg)
+int action(char *s, double * res, double a, double b, double arg)
 {
 
 	// Traditional Operators
 	if(strcmp("^", s)==0)
-		return pow(a,b);
-	if(strcmp("*", s)==0)
-		return a*b;
-	if(strcmp("/", s)==0)
-		return a/b;
-	if(strcmp("+", s)==0)
-		return a+b;
-	if(strcmp("-", s)==0)
-		return a-b;
+		*res = pow(a,b);
+	else if(strcmp("*", s)==0)
+		*res = a*b;
+	else if(strcmp("/", s)==0)
+		*res = a/b;
+	else if(strcmp("+", s)==0)
+		*res = a+b;
+	else if(strcmp("-", s)==0)
+		*res = a-b;
 
 	// Function
-	if(strcmp("sin", s)==0)
-		return sin(arg);
-	if(strcmp("cos", s)==0)
-		return cos(arg);
-	if(strcmp("tan", s)==0)
-		return tan(arg);
-	if(strcmp("exp", s)==0)
-		return exp(arg);
-	if(strcmp("log", s)==0)
+	else if(strcmp("sin", s)==0)
+		*res = sin(arg);
+	else if(strcmp("cos", s)==0)
+		*res = cos(arg);
+	else if(strcmp("tan", s)==0)
+		*res = tan(arg);
+	else if(strcmp("exp", s)==0)
+		*res = exp(arg);
+	else if(strcmp("log", s)==0){
 		if(arg<=0){
-			printf("Error: value out o function %s(x) domain", s);
-			exit(0);
+			printf("Error: value out of function %s(x) domain\n", s);
+			return -1;
 		}
-		return log(arg);
+		*res = log(arg);
+	}
+	else	return -1;
+
+	return 0;
 
 }
 

@@ -22,14 +22,14 @@ int main()
 	// Main Loop
 	system("clear");
 	while(1){
+		dequeue_all(&FUNCTION);
 		memset(s, '\0', SIZE);
-		fprintf(stdout, "SYA(%d) > ", line++);
-		fgets(s, 255, stdin);
-		s[strlen(s)-1]='\0'; // Removes '\n'
+		fprintf(stdout, "SYA(%d) > ", line);
+		fgets(s, 255, stdin); if(s[0]=='\n') continue;
+		line++; s[strlen(s)-1]='\0'; // Removes '\n'
 		if(command(s, result, precision, &FUNCTION)==0) break;
 	}
 	system("clear");
-
 	free(s);
 	return 0;
 }
@@ -41,8 +41,7 @@ int command(char *s, double result, int precision, QE ** FUNCTION){
 	// End of commands
 
 	if (f_create(s, FUNCTION)==-1) return -1;
-	result = function(FUNCTION, 0); // For variables f(x) change 0 for the number you want
-	dequeue_all(FUNCTION);
+	if (function(FUNCTION,&result, 0)==-1) return -1; // For variables f(x) change 0 for the number you want
 	printf("ans = %.*f\n",precision, result);
 	return 1;
 }

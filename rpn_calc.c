@@ -9,7 +9,7 @@
 
 char * oper_l = "+-*/^()";
 
-double rpn_calculator(QE ** FUNCTION, double x){
+int rpn_calculator(QE ** FUNCTION, double *res, double x){
 
 	// Intialize Stack
 	ST * CALCULATOR;
@@ -17,9 +17,9 @@ double rpn_calculator(QE ** FUNCTION, double x){
 
 	int i=0;
 	int n_toks=0;
+	double a=0, b=0, arg=0;
+	*res=0;
 	count_q(*FUNCTION, &n_toks);
-
-	double a=0, b=0, arg=0, res=0;
 
 	while(i<n_toks){
 		// NUMBER
@@ -35,8 +35,9 @@ double rpn_calculator(QE ** FUNCTION, double x){
 			if(is_function(first(*FUNCTION).string)){
 				enqueue(FUNCTION, first(*FUNCTION));
 				arg = top(CALCULATOR).val;
-				res = action(first(*FUNCTION).string,0,0,arg);
-				TOKEN t; t.prec=0; t.val = res;
+				if(action(first(*FUNCTION).string,res,0,0,arg)==-1)
+					return -1;
+				TOKEN t; t.prec=0; t.val = *res;
 				pop(&CALCULATOR);
 				add(&CALCULATOR, t);
 				dequeue(FUNCTION); i++;
@@ -53,13 +54,14 @@ double rpn_calculator(QE ** FUNCTION, double x){
 			enqueue(FUNCTION, first(*FUNCTION));
 			b = top(CALCULATOR).val; pop(&CALCULATOR);
 			a = top(CALCULATOR).val; pop(&CALCULATOR);
-			res = action(first(*FUNCTION).string, a, b, 0);
-			TOKEN t; t.prec=0; t.val = res;
+			if(action(first(*FUNCTION).string, res, a, b, 0)==-1)
+				return -1;
+			TOKEN t; t.prec=0; t.val = *res;
 			add(&CALCULATOR, t);
 			dequeue(FUNCTION); i++;
 		}
 	}
 
-	return top(CALCULATOR).val;
+	*res = top(CALCULATOR).val;
 }
 
