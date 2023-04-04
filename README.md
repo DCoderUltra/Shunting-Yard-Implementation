@@ -8,6 +8,20 @@ This programm uses the Shunting Yard Alghoritm to allow to calculate the result 
 I also implemented it so you can work with one unkown variable (you could activate it if you'd like).
 So has you might have seen in Numerical-Analysis-Tools Repository, this can be used to compute the solution of equations. 
 
+Available operators:
+ - Plus (+)
+ - Minus (-)
+ - Multiply (*)
+ - Divide (/)
+ - Exponent (^)
+
+Available functions:
+ - sin
+ - cos
+ - tan
+ - exp
+ - log
+
 To implement in the future:
 
   - Unkown variables detection
