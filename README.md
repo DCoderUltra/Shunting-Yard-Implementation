@@ -1,6 +1,6 @@
 # Shunting-Yard-Implementation
 
- v3.1
+ v3.1.1
 
 Lines of code: 629(+32)
 
