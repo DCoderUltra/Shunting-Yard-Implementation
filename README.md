@@ -2,7 +2,7 @@
 
  v3.1.2
 
-Lines of code: 654(+12)
+Lines of code: 654 (+12)
 
 This programm uses the Shunting Yard Alghoritm to allow to calculate the result of any numeric expression.
 You can interect with the program in a terminal like interface.
