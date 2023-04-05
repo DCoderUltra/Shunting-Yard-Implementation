@@ -9,7 +9,7 @@ About the programm:
  - I also implemented it so you can work with one unkown variable (you could activate it if you'd like).
  - This can be used to compute the solution of equations, which will be released on another project to be anounced latter.
 
------------ QUICK GUIDE -------------------------------
+------------------------------------------
 
 Available operators:
  - Plus (+)
