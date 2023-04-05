@@ -1,8 +1,8 @@
 # Shunting-Yard-Implementation
 
- v3.1.2
+ v3.1.3
 
-Lines of code: 654 (+12)
+Lines of code: 654 (+0)
 
 This programm uses the Shunting Yard Alghoritm to allow to calculate the result of any numeric expression.
 You can interect with the program in a terminal like interface.
@@ -25,6 +25,7 @@ Available functions:
  
  Availabel commands:
   - quit (it ends the programm)
+  - clear (wipes the screen)
 
 To implement in the future:
 
