@@ -42,4 +42,4 @@ To implement in the future:
   - NCURSES interface
   - Vim Like controls (to consider)
 
-Any bugs or suggestion let me know. :)
+Any bugs or suggestion let me know. 😄
