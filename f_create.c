@@ -4,7 +4,7 @@
 #include "global.c"
 #include "tok_functions.h"
 #include "structs.h"
-#include "sya.h"
+#include "alg_sya.h"
 
 int f_create(char *s, QE ** FUNCTION){
 	int n_toks;
@@ -25,6 +25,5 @@ int f_create(char *s, QE ** FUNCTION){
 	alg_sya(FUNCTION, n_toks);
 	//printf("\nRPN: "); list_q(*FUNCTION); puts("\n");
 	return 0;
-
 }
 

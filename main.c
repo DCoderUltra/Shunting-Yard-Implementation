@@ -38,6 +38,7 @@ int command(char *s, double result, int precision, QE ** FUNCTION){
 
 	// List of comands bellow
 	if(strcmp(s, "quit")==0) return 0;
+	if(strcmp(s, "clear")==0) {system("clear"); return 1;}
 	// End of commands
 
 	if (f_create(s, FUNCTION)==-1) return -1;
