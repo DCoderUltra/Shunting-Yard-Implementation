@@ -2,6 +2,8 @@
 
 v0.3.1.3
 
+⚠️ WARNING - There are memory leaks, I'm using Valgrind to try to solve them as soon as possible.
+
 Lines of code: 654 (+0)
 
 About the programm:
