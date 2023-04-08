@@ -1,10 +1,8 @@
 # Shunting-Yard-Implementation
 
-v0.3.1.3
+v0.3.2
 
-⚠️ WARNING - There are memory leaks, I'm using Valgrind to try to solve them as soon as possible.
-
-Lines of code: 654 (+0)
+Lines of code: 647 (-7)
 
 About the programm:
  - This programm uses the Shunting Yard Alghoritm to allow to calculate the result of any numeric expression.
