@@ -3,65 +3,50 @@
 
 #include "global.c"
 
-void init_q(QE ** queue){
-	*queue=NULL;
+void init_queue(QE ** node){
+	*node=NULL;
 }
 
-int empty_q(QE * queue){
-	return (queue==NULL);
+int empty_queue(QE * node){
+	return (node==NULL);
 }
 
 
-void enqueue(QE ** queue, TOKEN tok){
-	QE *tmp = malloc(sizeof(QE)*2);
-	if(tmp==NULL) return;
+void enqueue(QE ** lead, QE ** tail, TOKEN tok){
+	QE * new_node = (QE *) malloc(sizeof(QE));
+	if(new_node==NULL) return;
+	new_node -> t = tok;
 
-	if( (*queue) == NULL){
-		tmp -> t = tok;
-		tmp -> ahead = *queue;
-		tmp -> behind = NULL;
-		*queue = tmp;
+	if(empty_queue(*lead)){
+		new_node->ahead = NULL;
+		new_node->behind = NULL;
+		*lead = new_node;
+		*tail = new_node;
 	}
-	else if((*queue)->ahead != NULL)
-	{
-		tmp -> t = tok;
-		tmp -> ahead = *queue;
-		tmp -> behind = NULL;
-		(*queue) -> behind = tmp;
+	else{
+		new_node->ahead = *tail;
+		new_node->behind = NULL;
+		(*tail)->behind = new_node;
+		*tail = new_node;
 	}
-	else
-		enqueue(&((*queue)->behind),tok);
+
 }
 
-void dequeue(QE ** queue){
-
-	QE *tmp = malloc(sizeof(QE)*2);
-	if(tmp==NULL) return;
-
-	tmp = (*queue);
-	//if((*queue)->behind!=NULL)
-	*queue = (*queue)->behind;
-	//else *queue=NULL;
+void dequeue(QE ** tail){
+	if(empty_queue(*tail)) return;
+	QE * tmp = *tail;
+	*tail = (*tail)->behind;
 	free(tmp);
 }
 
-void dequeue_all(QE **queue){
-	QE *tmp = malloc(sizeof(QE)*2);
-	while(!empty_q(*queue)){
-		tmp = (*queue);
-		*queue = (*queue)->behind;
-		free(tmp);
-	}
-}
-
 void list_q(QE * queue){
-	if (empty_q(queue)) return;
+	if (empty_queue(queue)) return;
 	printf("%s ", (queue->t).string);
 	list_q(queue->behind);
 }
 
 void count_q(QE * queue, int *c){
-	if (empty_q(queue)) return;
+	if (empty_queue(queue)) return;
 	*c=*c+1;
 	count_q(queue->behind, c);
 }

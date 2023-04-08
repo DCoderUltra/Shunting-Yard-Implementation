@@ -24,7 +24,6 @@ int verify(char *s)
 	for(int i=0; s[i]!='\0'; i++){
 		if(s[i]=='(') par++;
 		if(s[i]==')') par--;
-//		assert(par>=0);
 	}
 	if(par!=0){
 		fprintf(stderr, "Unmatched Parentheses\n");
@@ -44,10 +43,11 @@ int verify(char *s)
 }
 
 // Writtes string in propper notation
-int regular(char *s){
+void regular(char *s){
 	char *opers= "+-*/^()";
-	char *tmp = (char *) malloc(sizeof(char)*strlen(s)*2);
-	memset(tmp,'\0',strlen(tmp));
+	char *tmp = (char *) malloc(sizeof(char)*strlen(s)*5); // *5 just for memory safety
+	int tmp_size = strlen(s)*5;
+	memset(tmp,'\0',tmp_size);
 	int i=0, j=0, b=0;
 
 	// If founds a simple operator adds a separator
@@ -86,10 +86,10 @@ int regular(char *s){
 		tmp[j++]=s[i];
 	}
 	while((tmp[0]==SEP)) tmp++;
-	if(tmp[strlen(tmp)-1]==SEP) tmp[strlen(tmp)-1]='\0';
+	tmp_size=strlen(tmp);
+	if(tmp[tmp_size-1]==SEP) tmp[tmp_size-1]='\0';
 	strcpy(s, tmp);
 	free(tmp);
-
 }
 
 // Counts separators i.e. number of tokens

@@ -61,9 +61,9 @@ TOKEN * creation(TOKEN *list, char *s, int n_tok)
 	return list;
 }
 
-void enqueue_list(TOKEN * list, int n_toks, QE **PQE){
+void enqueue_list(TOKEN * list, int n_toks, QE ** lead, QE ** tail){
 	for(int i=0; i<n_toks; i++)
-		enqueue(PQE, list[i]);
+		enqueue(lead, tail, list[i]);
 }
 
 int verify_functions(TOKEN * list, int n_toks){
@@ -75,12 +75,14 @@ int verify_functions(TOKEN * list, int n_toks){
 				if(strcmp(list[i].string, func)==0){
 					if(list[i+1].string[0]!='('){
 						printf("Bad use of function %s -> Try %s(argument)\nExamples: sin(5), cos(4-3), exp(-4^2) ...\n", list[i].string, list[i].string);
+					fclose(fp);
 					return -1;
 					}
 					break;
 				}
 			}
 	}
+	fclose(fp);
 	return 0;
 }
 

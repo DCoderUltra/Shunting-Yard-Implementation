@@ -17,7 +17,7 @@ int is_function(char *f_test){
 	return 0;
 }
 
-int function(QE ** FUNCTION, double * res, double x){
-	return rpn_calculator(FUNCTION, res, x);
+int function(QE ** FUNCTION_L, QE ** FUNCTION_T, double * res, double x){
+	return rpn_calculator(FUNCTION_L, FUNCTION_T, res, x);
 }
 

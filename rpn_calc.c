@@ -9,7 +9,7 @@
 
 char * oper_l = "+-*/^()";
 
-int rpn_calculator(QE ** FUNCTION, double *res, double x){
+int rpn_calculator(QE ** FUNCTION_L, QE ** FUNCTION_T, double *res, double x){
 
 	// Intialize Stack
 	ST * CALCULATOR;
@@ -19,49 +19,51 @@ int rpn_calculator(QE ** FUNCTION, double *res, double x){
 	int n_toks=0;
 	double a=0, b=0, arg=0;
 	*res=0;
-	count_q(*FUNCTION, &n_toks);
+	count_q(*FUNCTION_L, &n_toks);
 
 	while(i<n_toks){
 		// NUMBER
-		if(first(*FUNCTION).prec==0){
-			enqueue(FUNCTION, first(*FUNCTION));
-			double val = strtod(first(*FUNCTION).string, NULL);
+		if(first(*FUNCTION_L).prec==0){
+			enqueue(FUNCTION_L, FUNCTION_T, first(*FUNCTION_L));
+			double val = strtod(first(*FUNCTION_L).string, NULL);
 			TOKEN t; t.prec=0; t.val = val;
 			add(&CALCULATOR, t);
-			dequeue(FUNCTION); i++;
+			dequeue(FUNCTION_L); i++;
 		}
 		// FUNCTION OR UNKNOWN
-		else if(first(*FUNCTION).prec==6){
-			if(is_function(first(*FUNCTION).string)){
-				enqueue(FUNCTION, first(*FUNCTION));
+		else if(first(*FUNCTION_L).prec==6){
+			if(is_function(first(*FUNCTION_L).string)){
+				enqueue(FUNCTION_L, FUNCTION_T, first(*FUNCTION_L));
 				arg = top(CALCULATOR).val;
-				if(action(first(*FUNCTION).string,res,0,0,arg)==-1)
+				if(action(first(*FUNCTION_L).string,res,0,0,arg)==-1)
 					return -1;
 				TOKEN t; t.prec=0; t.val = *res;
 				pop(&CALCULATOR);
 				add(&CALCULATOR, t);
-				dequeue(FUNCTION); i++;
+				dequeue(FUNCTION_L); i++;
 			}
 			else{
-				enqueue(FUNCTION, first(*FUNCTION));
+				enqueue(FUNCTION_L, FUNCTION_T, first(*FUNCTION_L));
 				TOKEN t; t.prec=0; t.val = x;
 				add(&CALCULATOR, t);
-				dequeue(FUNCTION); i++;
+				dequeue(FUNCTION_L); i++;
 			}
 		}
 		// OPERATOR
 		else{
-			enqueue(FUNCTION, first(*FUNCTION));
+			enqueue(FUNCTION_L, FUNCTION_T, first(*FUNCTION_L));
 			b = top(CALCULATOR).val; pop(&CALCULATOR);
 			a = top(CALCULATOR).val; pop(&CALCULATOR);
-			if(action(first(*FUNCTION).string, res, a, b, 0)==-1)
+			if(action(first(*FUNCTION_L).string, res, a, b, 0)==-1)
 				return -1;
 			TOKEN t; t.prec=0; t.val = *res;
 			add(&CALCULATOR, t);
-			dequeue(FUNCTION); i++;
+			dequeue(FUNCTION_L); i++;
 		}
 	}
 
 	*res = top(CALCULATOR).val;
+	free(CALCULATOR);
+	return 0;
 }
 

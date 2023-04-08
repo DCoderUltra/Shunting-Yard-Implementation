@@ -29,7 +29,7 @@ void pop(ST** PES)
 	if(!empty(*PES)){
 		ST *tmp = *PES;
 		*PES = (*PES)->next;
-		//free(tmp);
+		free(tmp);
 	}
 }
 

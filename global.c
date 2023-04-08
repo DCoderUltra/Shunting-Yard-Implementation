@@ -15,7 +15,7 @@ typedef struct stackElem
 typedef struct queueElem
 {
 	TOKEN t;
-	struct queueElem * ahead;
 	struct queueElem * behind;
+	struct queueElem * ahead;
 }QE;
 

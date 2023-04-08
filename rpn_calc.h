@@ -1,2 +1,2 @@
-int rpn_calculator(QE ** FUNCTION, double * res, double x);
+int rpn_calculator(QE ** FUNCTION_L, QE **FUNCTION_T, double * res, double x);
 
