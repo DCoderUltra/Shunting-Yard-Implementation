@@ -11,10 +11,9 @@ int f_create(char *s, QE ** FUNCTION_L, QE **FUNCTION_T){
 	int n_toks;
 
 	// String Preparation and Check
-	remove_spaces(s); printf("NWS: %s\n", s);
+	remove_spaces(s); //printf("NWS: %s\n", s);
 	if(verify(s)==-1) return -1;
-	regular(s); printf("PFN: %s\n",s);
-	n_toks = count_toks(s);
+	regular(s); n_toks = count_toks(s); //printf("PFN: %s\n",s);
 
 	// List Tokens Creation
 	TOKEN * list = malloc(sizeof(TOKEN)*(n_toks+1));
@@ -24,8 +23,7 @@ int f_create(char *s, QE ** FUNCTION_L, QE **FUNCTION_T){
 	free(list);
 
 	// Shunting Yard Alghoritm
-	alg_sya(FUNCTION_L, FUNCTION_T, n_toks);
-	printf("RPN: "); list_q(*FUNCTION_L); puts("\n");
+	alg_sya(FUNCTION_L, FUNCTION_T, n_toks); //printf("RPN: "); list_q(*FUNCTION_L); puts("\n");
 	return 0;
 }
 

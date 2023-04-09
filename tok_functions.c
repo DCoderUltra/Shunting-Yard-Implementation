@@ -4,7 +4,6 @@
 #include<ctype.h>
 #define SEP ' '
 #define SIZE 256
-
 #include "global.c"
 #include "structs.h"
 
@@ -25,8 +24,7 @@ TOKEN oper[] = {
 		{"END", A_NONE, -1}
 };
 
-TOKEN * creation(TOKEN *list, char *s, int n_tok)
-{
+TOKEN * creation(TOKEN *list, char *s, int n_tok){
 	int l_pos=0, k=0;
 	while(l_pos<n_tok){
 		char tmp[50]="\0";
@@ -57,7 +55,6 @@ TOKEN * creation(TOKEN *list, char *s, int n_tok)
 		}
 		l_pos++;
 	}
-
 	return list;
 }
 

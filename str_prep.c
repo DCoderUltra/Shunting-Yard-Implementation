@@ -5,20 +5,17 @@
 #include<ctype.h>
 #define SEP ' '
 
-void remove_spaces(char *s){
 // Removes all white spaces
+void remove_spaces(char *s){
 	char tmp[strlen(s)];
 	int i,j;
-
 	for(i=0, j=0; s[i]!='\0'; i++){
 		if(s[i]!=' ') tmp[j++]=s[i];
 	}
-	tmp[j]='\0';
-	strcpy(s,tmp);
+	tmp[j]='\0'; strcpy(s,tmp);
 }
 
-int verify(char *s)
-{
+int verify(char *s){
 	int par = 0;
 	// Matching Parentheses Check
 	for(int i=0; s[i]!='\0'; i++){
@@ -29,7 +26,6 @@ int verify(char *s)
 		fprintf(stderr, "Unmatched Parentheses\n");
 		return -1;
 	}
-
 	// Operators Bad use
 	for(int i=1; s[i]!='\0'; i++){
 		if(isdigit(s[i-1]) || isdigit(s[i]) || isalpha(s[i-1]) || isalpha(s[i]));
@@ -46,9 +42,8 @@ int verify(char *s)
 void regular(char *s){
 	char *opers= "+-*/^()";
 	char *tmp = (char *) malloc(sizeof(char)*strlen(s)*5); // *5 just for memory safety
-	int tmp_size = strlen(s)*5;
+	int tmp_size = strlen(s)*5, i=0, j=0, b=0;
 	memset(tmp,'\0',tmp_size);
-	int i=0, j=0, b=0;
 
 	// If founds a simple operator adds a separator
 	if(strchr(opers, s[0])!=NULL){
@@ -71,12 +66,10 @@ void regular(char *s){
 			tmp[j++]=s[i];
 			tmp[j++]=SEP;
 		}
-		else
-			tmp[j++]=s[i];
+		else tmp[j++]=s[i];
 		i++;
 	}
-	tmp[j]='\0';
-	strcpy(s,tmp); memset(tmp,'\0',strlen(tmp));
+	tmp[j]='\0'; strcpy(s,tmp); memset(tmp,'\0',strlen(tmp));
 
 	// Erases multiples separators
 	for(int i=0, j=0; s[i]!='\0'; i++){
@@ -88,8 +81,7 @@ void regular(char *s){
 	while((tmp[0]==SEP)) tmp++;
 	tmp_size=strlen(tmp);
 	if(tmp[tmp_size-1]==SEP) tmp[tmp_size-1]='\0';
-	strcpy(s, tmp);
-	free(tmp);
+	strcpy(s, tmp); free(tmp);
 }
 
 // Counts separators i.e. number of tokens

@@ -5,7 +5,6 @@ void add(ST **PES, TOKEN t_in);
 void pop(ST** PES);
 void list(ST *PES);
 TOKEN top(ST* PES);
-
 // Queue Headers
 void init_queue(QE ** queue);
 int empty_queue(QE * queue);

@@ -6,14 +6,12 @@ typedef struct{
 }TOKEN;
 
 // Stack Node Definition
-typedef struct stackElem
-{
+typedef struct stackElem{
 	TOKEN t;
 	struct stackElem *next;
 } ST;
 
-typedef struct queueElem
-{
+typedef struct queueElem{
 	TOKEN t;
 	struct queueElem * behind;
 	struct queueElem * ahead;

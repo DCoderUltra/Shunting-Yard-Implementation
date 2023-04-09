@@ -12,7 +12,6 @@
 int command(char *s, double result, int precision, QE ** FUNCTION_L, QE ** FUNCTION_T);
 
 int main(){
-
 	double result;
 	int precision = 5, line = 1;
 	char * s = (char *) malloc(sizeof(char)*SIZE);
@@ -40,6 +39,7 @@ int command(char *s, double result, int precision, QE ** FUNCTION_L, QE ** FUNCT
 	// List of comands bellow
 	if(strcmp(s, "quit")==0) return 0;
 	if(strcmp(s, "clear")==0) {wipe; return 1;}
+	if(strcmp(s, "help")==0) {system("cat README.md | less"); return 1;}
 	// End of commands
 	if(f_create(s, FUNCTION_L, FUNCTION_T)==-1) return -1;
 	if(function(FUNCTION_L, FUNCTION_T, &result, 0)==-1) return -1;

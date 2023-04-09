@@ -3,3 +3,11 @@ cos
 tan
 log
 exp
+asin
+acos
+atan
+sec
+cosec
+cotan
+sqrt
+fact

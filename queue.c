@@ -1,6 +1,5 @@
 #include<stdio.h>
 #include<stdlib.h>
-
 #include "global.c"
 
 void init_queue(QE ** node){
@@ -10,7 +9,6 @@ void init_queue(QE ** node){
 int empty_queue(QE * node){
 	return (node==NULL);
 }
-
 
 void enqueue(QE ** lead, QE ** tail, TOKEN tok){
 	QE * new_node = (QE *) malloc(sizeof(QE));
@@ -29,7 +27,6 @@ void enqueue(QE ** lead, QE ** tail, TOKEN tok){
 		(*tail)->behind = new_node;
 		*tail = new_node;
 	}
-
 }
 
 void dequeue(QE ** tail){

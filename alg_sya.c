@@ -1,6 +1,4 @@
-#include <stdio.h>
 #include <stdlib.h>
-
 #include "global.c"
 #include "structs.h"
 #include "functions.h"
@@ -16,7 +14,6 @@ void alg_sya(QE ** FUNCTION_L, QE ** FUNCTION_T, int n_toks)
 
 	int i=0;
 	while(i<n_toks){
-		// NUMBERS
 		if(first(*FUNCTION_L).prec==0){
 			enqueue(FUNCTION_L, FUNCTION_T, first(*FUNCTION_L));
 			dequeue(FUNCTION_L);
@@ -60,7 +57,5 @@ void alg_sya(QE ** FUNCTION_L, QE ** FUNCTION_T, int n_toks)
 		enqueue(FUNCTION_L, FUNCTION_T, top(PES));
 		pop(&PES);
 	}
-
-
 }
 

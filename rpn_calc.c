@@ -15,10 +15,9 @@ int rpn_calculator(QE ** FUNCTION_L, QE ** FUNCTION_T, double *res, double x){
 	ST * CALCULATOR;
 	init(&CALCULATOR);
 
-	int i=0;
-	int n_toks=0;
-	double a=0, b=0, arg=0;
 	*res=0;
+	int i=0,  n_toks=0;
+	double a=0, b=0, arg=0;
 	count_q(*FUNCTION_L, &n_toks);
 
 	while(i<n_toks){
@@ -61,7 +60,6 @@ int rpn_calculator(QE ** FUNCTION_L, QE ** FUNCTION_T, double *res, double x){
 			dequeue(FUNCTION_L); i++;
 		}
 	}
-
 	*res = top(CALCULATOR).val;
 	free(CALCULATOR);
 	return 0;
