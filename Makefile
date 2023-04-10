@@ -4,7 +4,7 @@ COMP = cc
 FLAGS= -lm
 
 ${PROG} : ${FILES}
-	  ${COMP} -o ${PROG} ${FILES} ${FLAGS}
+	  ${COMP} -Wall -O2 -o ${PROG} ${FILES} ${FLAGS}
 debug:
 	  ${COMP} -o ${PROG} ${FILES} ${FLAGS} -g
 	  gdb ./${PROG}

@@ -3,8 +3,13 @@
 #include <math.h>
 
 int action(char *s, double * res, double a, double b, double arg){
+	// Constants
+	if(strcmp("pi", s)==0) *res=3.141592653589793;
+	if(strcmp("e", s)==0) *res=2.718281828459045;
+
+
 	// Traditional Operators
-	if(strcmp("^", s)==0) 		*res = pow(a,b);
+	else if(strcmp("^", s)==0) 		*res = pow(a,b);
 	else if(strcmp("*", s)==0)	*res = a*b;
 	else if(strcmp("/", s)==0)	*res = a/b;
 	else if(strcmp("+", s)==0)	*res = a+b;

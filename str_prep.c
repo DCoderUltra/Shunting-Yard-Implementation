@@ -9,9 +9,7 @@
 void remove_spaces(char *s){
 	char tmp[strlen(s)];
 	int i,j;
-	for(i=0, j=0; s[i]!='\0'; i++){
-		if(s[i]!=' ') tmp[j++]=s[i];
-	}
+	for(i=0, j=0; s[i]!='\0'; i++) if(s[i]!=' ') tmp[j++]=s[i];
 	tmp[j]='\0'; strcpy(s,tmp);
 }
 
@@ -42,7 +40,7 @@ int verify(char *s){
 void regular(char *s){
 	char *opers= "+-*/^()";
 	char *tmp = (char *) malloc(sizeof(char)*strlen(s)*5); // *5 just for memory safety
-	int tmp_size = strlen(s)*5, i=0, j=0, b=0;
+	int tmp_size = strlen(s)*5, i=0, j=0;
 	memset(tmp,'\0',tmp_size);
 
 	// If founds a simple operator adds a separator
@@ -57,7 +55,7 @@ void regular(char *s){
 	}
 	while(s[i]!='\0'){
 		if(strchr(opers, s[i])!=NULL){
-			if(s[i]=='-' & s[i-1]=='('){ // Subs (-x for (0-x)
+			if(s[i]=='-' && s[i-1]=='('){ // Subs (-x for (0-x)
 				tmp[j++]=SEP;
 				tmp[j++]='0';
 				tmp[j++]=SEP;
@@ -88,8 +86,7 @@ void regular(char *s){
 int count_toks(char *s){
 	int n_toks=0;
 	for(int i=0; s[i]!='\0'; i++)
-		if(s[i]==SEP)
-			n_toks++;
+		if(s[i]==SEP) n_toks++;
 	return n_toks+1;
 }
 

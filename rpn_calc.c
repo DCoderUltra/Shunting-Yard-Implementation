@@ -14,7 +14,6 @@ int rpn_calculator(QE ** FUNCTION_L, QE ** FUNCTION_T, double *res, double x){
 	// Intialize Stack
 	ST * CALCULATOR;
 	init(&CALCULATOR);
-
 	*res=0;
 	int i=0,  n_toks=0, ret=0;
 	double a=0, b=0, arg=0;
@@ -29,7 +28,7 @@ int rpn_calculator(QE ** FUNCTION_L, QE ** FUNCTION_T, double *res, double x){
 			add(&CALCULATOR, t);
 			dequeue(FUNCTION_L); i++;
 		}
-		// FUNCTION OR UNKNOWN
+		// FUNCTION OR CONSTANT OR UNKOWN
 		else if(first(*FUNCTION_L).prec==6){
 			if(is_function(first(*FUNCTION_L).string)){
 				enqueue(FUNCTION_L, FUNCTION_T, first(*FUNCTION_L));
@@ -43,7 +42,8 @@ int rpn_calculator(QE ** FUNCTION_L, QE ** FUNCTION_T, double *res, double x){
 			}
 			else{
 				enqueue(FUNCTION_L, FUNCTION_T, first(*FUNCTION_L));
-				TOKEN t; t.prec=0; t.val = x;
+				action(first(*FUNCTION_L).string, res, 0,0,0);
+				TOKEN t; t.prec=0; t.val = *res;
 				add(&CALCULATOR, t);
 				dequeue(FUNCTION_L); i++;
 			}

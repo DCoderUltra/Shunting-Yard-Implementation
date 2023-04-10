@@ -12,7 +12,7 @@
 int command(char *s, double result, int precision, QE ** FUNCTION_L, QE ** FUNCTION_T);
 
 int main(){
-	double result;
+	double result=0;
 	int precision = 5, line = 1;
 	char * s = (char *) malloc(sizeof(char)*SIZE);
 

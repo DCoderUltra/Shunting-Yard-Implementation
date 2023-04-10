@@ -2,7 +2,7 @@
 
 v0.3.3
 
-Lines of code: 605 (-42)
+Lines of code: 607 (+2)
 
 About the programm:
  - This programm uses the Shunting Yard Alghoritm to allow to calculate the result of any numeric expression.
@@ -33,6 +33,10 @@ Available functions:
  - log   (natual log)
  - sqrt  (Square Root)
  - fact	 (Factorial)
+
+ Availabel constants: (new)
+ - pi
+ - e (euler number)
 
  Availabel commands:
   - quit (it ends the programm)
