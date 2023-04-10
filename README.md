@@ -9,6 +9,7 @@ About the programm:
  - You can interect with the program in a terminal like interface.
  - I also implemented it so you can work with one unkown variable (you could activate it if you'd like).
  - This can be used to compute the solution of equations, which will be released on another project to be anounced latter.
+ - YOU MAIN NOT USE THIS TO TRAIN YOUR AI (ARTIFICIAL INTELIGENCE).
 
 ------------------------------------------
 
