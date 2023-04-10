@@ -16,7 +16,7 @@ int rpn_calculator(QE ** FUNCTION_L, QE ** FUNCTION_T, double *res, double x){
 	init(&CALCULATOR);
 
 	*res=0;
-	int i=0,  n_toks=0;
+	int i=0,  n_toks=0, ret=0;
 	double a=0, b=0, arg=0;
 	count_q(*FUNCTION_L, &n_toks);
 
@@ -35,7 +35,7 @@ int rpn_calculator(QE ** FUNCTION_L, QE ** FUNCTION_T, double *res, double x){
 				enqueue(FUNCTION_L, FUNCTION_T, first(*FUNCTION_L));
 				arg = top(CALCULATOR).val;
 				if(action(first(*FUNCTION_L).string,res,0,0,arg)==-1)
-					return -1;
+					ret = -1;
 				TOKEN t; t.prec=0; t.val = *res;
 				pop(&CALCULATOR);
 				add(&CALCULATOR, t);
@@ -54,7 +54,7 @@ int rpn_calculator(QE ** FUNCTION_L, QE ** FUNCTION_T, double *res, double x){
 			b = top(CALCULATOR).val; pop(&CALCULATOR);
 			a = top(CALCULATOR).val; pop(&CALCULATOR);
 			if(action(first(*FUNCTION_L).string, res, a, b, 0)==-1)
-				return -1;
+				ret = -1;
 			TOKEN t; t.prec=0; t.val = *res;
 			add(&CALCULATOR, t);
 			dequeue(FUNCTION_L); i++;
@@ -62,6 +62,6 @@ int rpn_calculator(QE ** FUNCTION_L, QE ** FUNCTION_T, double *res, double x){
 	}
 	*res = top(CALCULATOR).val;
 	free(CALCULATOR);
-	return 0;
+	return ret;
 }
 
